@@ -26,6 +26,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')),
     path('about/', TemplateView.as_view(template_name='about.html')),
     path('materials/', include('materials.urls')),
+    path('ads.txt', TemplateView.as_view(template_name='ads.txt', content_type='text/plain'))
 ]
 
 
