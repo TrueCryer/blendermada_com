@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load sorl_thumbnail %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+
+{% block content %}
+
+{# Header #}
+<div class="row">
+  <div class="col">
+    <h1>{{ object.name }}</h1>
+  </div>
+</div>
+
+{# Materials grid #}
+<div class="row">
+    <div class="col s12 m6 l4">
+        {% thumbnail object.preview "512x512" crop="center" as im %}
+            <img class="responsive-img" src="{{ im.url }}">
+        {% endthumbnail %}
+    </div>
+    <div class="col s12 m6">
+        <div>{{ object.description|safe }}</div>
+        <ul class="collection">
+            <li class="collection-item">Category: <span class="right">{{ object.category }}</span></li>
+            <li class="collection-item">Engine: <span class="right">{{ object.get_engine_display }}</span></li>
+            <li class="collection-item">Author: <span class="right">{{ object.user.username }}</span></li>
+        </ul>
+        <p><a class="waves-effect waves-light btn brown darken-4" href="{{ object.library.url }}">Download</a></p>
+    </div>
+</div>
+
+{% endblock %}
