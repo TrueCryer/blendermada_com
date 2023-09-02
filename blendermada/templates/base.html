@@ -42,6 +42,10 @@
           });
         </script>
 
+        <!-- Yandex.RTB -->
+        <script>window.yaContextCb=window.yaContextCb||[]</script>
+        <script src="https://yandex.ru/ads/system/context.js" async></script>
+
     </head>
 
 
@@ -54,8 +58,12 @@
           {% block content %}{% endblock %}
 
           {# adsense #}
-          {% include 'ads/google.html' %}
-          {% include 'ads/yandex.html' %}
+          <!--{% include 'ads/google.html' %}
+          {% include 'ads/yandex.html' %}-->
+          <!-- Yandex.RTB R-A-2842625-1 -->
+          <div id="yandex_rtb_R-A-2842625-1"></div>
+
+</script>
 
         </div>
 
@@ -63,6 +71,12 @@
 
         {# JavaScript #}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>window.yaContextCb.push(()=>{
+          Ya.Context.AdvManager.render({
+            "blockId": "R-A-2842625-1",
+            "renderTo": "yandex_rtb_R-A-2842625-1"
+          })
+        })
         {% block extra_js %}{% endblock %}
 
     </body>
